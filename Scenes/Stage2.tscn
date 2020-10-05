@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Portal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://minion-2020s2-fisica-2d-master/piso1.png" type="Texture" id=3]
+[ext_resource path="res://minion-2020s2-fisica-2d-master/piso2.png" type="Texture" id=4]
+[ext_resource path="res://minion-2020s2-fisica-2d-master/trampa.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 545.661, 47.5544 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 31.8727, 307.449 )
+
+[node name="Stage2" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2( 28.3919, 552.764 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Floor"]
+position = Vector2( 481.07, -0.273468 )
+scale = Vector2( 11.234, 1 )
+texture = ExtResource( 4 )
+
+[node name="Grass" type="StaticBody2D" parent="."]
+position = Vector2( 526.339, 457.169 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Grass"]
+position = Vector2( -18, 0 )
+scale = Vector2( 11.1277, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Grass"]
+shape = SubResource( 1 )
+
+[node name="Trap" type="RigidBody2D" parent="."]
+position = Vector2( 380.726, 285.411 )
+mass = 15.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Trap"]
+position = Vector2( -0.244919, -0.341881 )
+scale = Vector2( 0.643564, 0.664935 )
+texture = ExtResource( 5 )
+
+[node name="CollisionLeft" type="CollisionPolygon2D" parent="Trap"]
+polygon = PoolVector2Array( -259.466, -127.4, -224.818, -126.693, -224.818, -33.3548, -12.6862, -34.0619, -13.3933, 94.6315, -47.3344, 96.0457, -47.3344, 1.29343, -260.174, 2.00055 )
+
+[node name="CollisionRight" type="CollisionPolygon2D" parent="Trap"]
+polygon = PoolVector2Array( 258.314, 124.915, 258.875, -32.7908, -14.4441, -31.6684, -14.4441, -95.6487, -47.5567, -95.6487, -47.5567, 2.56674, 224.079, 2.00549, 224.64, 126.599 )
+
+[node name="Box" parent="." instance=ExtResource( 2 )]
+position = Vector2( 405.309, 225.36 )
+
+[node name="Box4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 551.002, 226.42 )
+
+[node name="Box3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 502.012, 225.579 )
+
+[node name="Box2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 453.021, 226.42 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Wall"]
+position = Vector2( 0.396835, 275.327 )
+scale = Vector2( 0.670699, 6.85803 )
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 0, 258.996 )
+shape = SubResource( 2 )
+
+[node name="Portal" parent="." instance=ExtResource( 1 )]
+position = Vector2( 945.419, 350.816 )
+scale = Vector2( 0.5, 0.5 )
